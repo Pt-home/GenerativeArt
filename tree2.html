@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tree 2</title>
+  <style>
+   body { 
+     background-color: #474747; 
+     user-select: none; 
+     margin: 0; 
+     padding: 0; }
+    body, input, select, label { 
+      font-family: "Open Sans", Sans-Serif; 
+      font-size: 11px; 
+      color: #d5d5d5; 
+      vertical-align: top; 
+      overflow: hidden; 
+    }
+    label { 
+      line-height:21px; 
+      display: block; 
+      margin: 2px 4px 0 0;
+      width:4em;
+    }
+    .form-group, .form-group-param {
+      text-align:center;
+    }
+    .form-group-param label { 
+      display: inline-block; 
+      width: 6em;
+      text-align: right;
+    }
+    input { 
+      background-color: #252525; 
+      border: 1px solid #252525; 
+      border-radius: 3px; 
+      transition: border 0.5s; 
+      padding: 3px; 
+      box-sizing: border-box; 
+      margin: 2px 2px;
+      width: 4em;
+    }
+
+    select { 
+      background-color: #252525; 
+      border: 1px solid #252525; 
+      border-radius: 3px; 
+      transition: border 0.5s; 
+      padding: 3px; 
+      box-sizing: border-box; 
+      margin: 2px 2px;
+      width: 10em;
+    }
+     
+    input:not(.button):hover, select:hover, input:not(.button):focus, select:focus 
+    { border: 1px solid #3482f6; 
+     outline: none !important; 
+    }
+    button { 
+      font-family: "Open Sans", Sans-Serif; 
+      font-size: 12px; 
+      color: #d5d5d5; 
+      background-color: #606060; 
+      margin: 0 0 4px 0; 
+      border-radius: 3px; 
+      border-top-width: 1px; 
+      border-top-color: rgba(255,255,255,0.15); 
+      border-bottom-width: 1px;
+      border-bottom-color: rgba(0,0,0,0.6);
+      border-left: 0px; 
+      border-right: 0px;
+      padding: 4px;
+      font-size: 12px; 
+      width:5em;
+      text-overflow: ellipsis; 
+      cursor: pointer;
+    }
+    button:hover { 
+      background-color: #6a6a6a;
+    }
+    .page {
+      padding: 6px;
+      margin: 0px auto;
+    }
+    .page > div {
+      margin-bottom: 6px;
+    }
+    h3 {
+      text-align:center;
+      line-height: 0;
+    }
+    
+       
+  </style>
+ 
+</head>
+<body>
+          
+      
+    <form id="Tree2">     
+
+      <div class="form-group-param">
+        <label for="methodValue">Method:</label>
+        <select name="methodValue" id="methodValue" onchange="interfaceGA();">
+          <option value="DL" >Differential Line</option> 
+          <option value="hyphae">Hyphae</option> 
+          <option value="tree">Hyphae as Tree</option>
+          <option value="tree2" selected>Tree</option>
+          <option value="veins">Veins</option>
+      </select>
+      </div>
+
+      <div id="page" class="page">
+      
+      <div class="form-group-param"> 
+        <label for="diminishValue">Diminish:</label>
+        <input type="number" id="diminishValue" name="diminishValue" value="0.8"  step="0.01" min="0.01" max="1.0" required> 
+        <label for="splitDiminishValue">DimSplit:</label>
+        <input type="number" id="splitDiminishValue" name="splitDiminishValue" value="0.6"  step="0.01" min="0.01" max="1.0" required>        
+      </div>
+
+      <div class="form-group-param"> 
+        <label for="angleExpValue">AngleExp:</label>
+        <input type="number" id="angleExpValue" name="angleExpValue" value="1.5"  step="0.1" min="0.1" required>
+        <label for="probScaleValue">ProbScale:</label>
+        <input type="number" id="probScaleValue" name="probScaleValue" value="0.02" step="0.01" min="0.01" max="1.0" required> 
+      </div>
+
+      <div class="form-group-param"> 
+        <label for="stepsValue">Steps:</label>
+        <input type="number" id="stepsValue" name="stepsValue" value="20"  step="1"  min="2" required> 
+        <label for="startRadiusValue">Start radius:</label>
+        <input type="number" id="startRadiusValue" name="startRadiusValue" value="40.0"  step="0.1" min="1.0"  required>
+      </div>
+
+      <script>
+        
+       function interfaceGA(){
+          var methodType = document.getElementById("methodValue").value;
+          
+          if (methodType == "DL"){
+            window.location.replace("index.html");              
+          } else if (methodType == "hyphae") {
+            window.location.replace("hyphae.html");                  
+          } else if (methodType == "tree") {
+            window.location.replace("tree.html");                  
+          } else if (methodType == "tree2") {
+            window.location.replace("tree2.html");                  
+          } else if (methodType == "veins") {
+            window.location.replace("veins.html");                  
+          }
+
+        } 
+          
+      </script> 
+
+      </div>
+     
+    </form>                 
+  
+
+  <div class="form-group">
+       <button id="refreshButton">Refresh</button>
+       <button id="saveButton">Export</button><br>
+    <svg id="canvas" xmlns="http://www.w3.org/2000/svg" width="272" height="272" style="border:1px solid gray; background-color: white;"/>
+     </div>  
+
+  <script src="tree2.js"></script>  
+  
+</body>
+</html>
